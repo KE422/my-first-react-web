@@ -14,7 +14,7 @@ const Nav = () => {
   return (
     <>
       <Hidden smDown>
-        <StyledContainer className="nav">
+        <StyledContainer className="nav-container">
           {routes.map((route, i) => (
             <StyledLink to={route[0]} key={i}>
               {route[1]}
@@ -23,7 +23,7 @@ const Nav = () => {
         </StyledContainer>
       </Hidden>
       <Hidden mdUp>
-        <StyledContainer className="drawer">
+        <StyledContainer className="drawer-container">
           {routes.map((route, i) => (
             <StyledLink to={route[0]} key={i}>
               {route[1]}
@@ -41,24 +41,24 @@ const StyledContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  &.nav {
+  &.nav-container {
+    height: 60px;
+    background: #fac337;
     flex-direction: row;
-    flex: 1;
-    justify-content: flex-end;
-    padding-bottom: 10px;
+    justify-content: center;
   }
-
-  &.drawer {
-    border-bottom: 1px solid ${(props) => props.theme.border};
+  &.drawer-container {
     flex-direction: column;
+    border-bottom: 1px solid ${(props) => props.theme.border};
   }
 `
 
 const StyledLink = styled(Link)`
   padding: 10px;
   text-decoration: none;
+  font-weight: 500;
   color: ${(props) => props.theme.fontColor};
   &:hover {
-    color: ${(props) => props.theme.highlight};
+    color: ${(props) => props.theme.body};
   }
 `

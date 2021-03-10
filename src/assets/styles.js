@@ -1,6 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
-
 export const lightTheme = {
   body: '#fff',
   fontColor: '#000',
