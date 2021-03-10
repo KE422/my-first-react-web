@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyles, lightTheme, darkTheme } from './assets/styles'
+import { Route } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Header from './containers/Header'
+import Main from './containers/Main'
+import Footer from './containers/Footer'
 
-function App() {
+const App = ({ theme }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles />
+      <Header />
+      <Route path="/" components={Main} />
+      <Footer />
+    </ThemeProvider>
+  )
 }
 
-export default App;
+const mapStateToProps = ({ theme }) => {
+  return {
+    theme: theme.theme,
+  }
+}
+
+export default connect(mapStateToProps)(App)
